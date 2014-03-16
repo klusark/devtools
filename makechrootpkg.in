@@ -66,7 +66,7 @@ usage() {
 	exit 1
 }
 
-while getopts 'hcur:I:l:nTD:d:' arg; do
+while getopts ':hcur:I:l:nTD:d:' arg; do
 	case "$arg" in
 		h) usage ;;
 		c) clean_first=true ;;
@@ -78,7 +78,7 @@ while getopts 'hcur:I:l:nTD:d:' arg; do
 		l) copy="$OPTARG" ;;
 		n) run_namcap=true; makepkg_args="$makepkg_args -i" ;;
 		T) temp_chroot=true; copy+="-$$" ;;
-		*) makepkg_args="$makepkg_args -$arg $OPTARG" ;;
+		*) makepkg_args="$makepkg_args -$OPTARG" ;;
 	esac
 done
 
